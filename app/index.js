@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components';
 import { useFetch } from './utils/api'
 import { Tile } from './components/Tile'
+import { Nav } from './components/Nav'
 import './index.css'
 
 const NextToJumpWrapper = styled.div`
@@ -22,9 +23,10 @@ const NextToJumpWrapper = styled.div`
 
 function NextToJump() {
   const [data, setData] = React.useState(null);
+  const [type, setType] = React.useState('1,2,3')
 
   const { loading, data: race, error } = useFetch(
-    `https://beteasy.com.au/api/home/next-jumps/1`
+    `https://beteasy.com.au/api/home/next-jumps/2`
   );
 
   if (loading === true) {
@@ -41,10 +43,12 @@ function NextToJump() {
 
   return (
     <NextToJumpWrapper>
+      <Nav></Nav>
       {race.result.map(race => (
         <Tile
           key={race.EventName}
           link={`/racing-betting/${race.EventType.Slug}/${race.Venue.Slug}/${race.DateSlug}/race-${race.RaceNumber}-${race.MasterEventID}-${race.EventID}`}
+          icon={race.EventType.EventTypeDesc}
           venue={race.Venue.Venue}
           number={race.RaceNumber}
           time={race.AdvertisedStartTime}

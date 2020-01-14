@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
+import Icon from "../icons";
 import { getDifference } from '../utils/timer'
 
 const RaceEvent = styled.div`
@@ -46,6 +47,11 @@ const Countdown = styled.div`
   color: ${(props) => props.timeLeft < 10 ? '#dc0000' : "#652f9c"};
 `;
 
+const RaceEventIcon = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export function Tile(props) {
   const [timeLeft, setTimeLeft] = React.useState(null)
 
@@ -60,6 +66,9 @@ export function Tile(props) {
       <RaceEventLink
         href={props.link}
       >
+        <RaceEventIcon>
+          <Icon name={props.icon}></Icon>
+        </RaceEventIcon>
         <RaceEventDetail>
           <RaceEventVenue>{props.venue}</RaceEventVenue>
           <RaceEventRace><span>Race {props.number}</span></RaceEventRace>
