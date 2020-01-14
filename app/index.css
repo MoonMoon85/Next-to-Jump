@@ -1,3 +1,13 @@
-body {
-  background: green;
-} 
+#app .Layout__left--1ygeK .NextToJump__eventWrapper--13zZJ {
+  display: none;
+}
+
+#app .Layout__contentContainer--3gchM {
+  padding-top: 200px;
+}
+
+@media (min-width: 801px) {
+  #app .Layout__contentContainer--3gchM {
+    padding-top: 187px;
+  }
+}

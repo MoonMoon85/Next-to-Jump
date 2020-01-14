@@ -1,6 +1,50 @@
 import React from 'react'
+import styled from 'styled-components';
 import PropTypes from 'prop-types'
 import { getDifference } from '../utils/timer'
+
+const RaceEvent = styled.div`
+  className: 'RaceEvent';
+  border-right: 1px solid #ebedf5;
+  background: #fff;
+  line-height: 1.4;
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+const RaceEventLink = styled.a`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 10px;
+`;
+
+const RaceEventDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px;
+`;
+
+const RaceEventVenue = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80px;
+  height: 13px;
+  white-space: nowrap;
+  color: #652f9c;
+`;
+
+const RaceEventRace = styled.div`
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  color: #afafaf;
+`;
+
+const Countdown = styled.div`
+  color: ${(props) => props.timeLeft < 10 ? '#dc0000' : "#652f9c"};
+`;
 
 export function Tile(props) {
   const [timeLeft, setTimeLeft] = React.useState(null)
@@ -10,22 +54,19 @@ export function Tile(props) {
       setTimeLeft(getDifference(props.time))
     }, 1000)
   }, [])
-  
-  return(
-    <div className="NextToJump__raceEvent--bfMON webroi">
-      <a
-        className="Link__link--9x4YY"
+
+  return (
+    <RaceEvent>
+      <RaceEventLink
         href={props.link}
       >
-        <div className="NextToJump__eventDetail--CUzdX">
-          <div className="NextToJump__venue--1jwWA">{props.venue}</div>
-          <div className="NextToJump__race--3JydR"><span>Race {props.number}</span></div>
-        </div>
-        <div className="NextToJump__countdown--EG8mR">
-          <span className="Countdown__countdown--4vRpD Countdown__imminent--2yc2K" >{timeLeft}</span>
-        </div>
-      </a>
-    </div>
+        <RaceEventDetail>
+          <RaceEventVenue>{props.venue}</RaceEventVenue>
+          <RaceEventRace><span>Race {props.number}</span></RaceEventRace>
+        </RaceEventDetail>
+        <Countdown>{timeLeft}</Countdown>
+      </RaceEventLink>
+    </RaceEvent>
   )
 }
 
