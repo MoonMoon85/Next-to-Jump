@@ -5,19 +5,19 @@ import Icon from "../icons";
 import { getDifference } from '../utils/timer'
 
 const RaceEvent = styled.div`
-  className: 'RaceEvent';
   border-right: 1px solid #ebedf5;
   background: #fff;
   line-height: 1.4;
   font-size: 12px;
   font-weight: 400;
+  min-width: 20%;
 `;
 
 const RaceEventLink = styled.a`
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: flex-start;
+  justify-content: space-around;
   padding: 10px;
 `;
 
@@ -54,8 +54,9 @@ const RaceEventIcon = styled.div`
 
 export function Tile(props) {
   const [timeLeft, setTimeLeft] = React.useState(null)
-
+  
   React.useEffect(() => {
+    setTimeLeft(getDifference(props.time))
     window.setInterval(() => {
       setTimeLeft(getDifference(props.time))
     }, 1000)

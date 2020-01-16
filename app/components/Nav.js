@@ -31,26 +31,24 @@ const Button = styled.button`
 `;
 
 export function Nav(props) {
-  const [type, setType] = React.useState('1,2,3')
-
   return (
     <NextToJumpFilter>
-      <Button onClick={() => setType('1,2,3')}>
+      <Button onClick={() => props.onUpdateRaceType('1,2,3')}>
         All
       </Button>
-      <Button onClick={() => setType('1')}>
+      <Button onClick={() => props.onUpdateRaceType('1')}>
         <Icon
           name="Thoroughbred"
           fill="#652f9c"
           />
       </Button>
-      <Button onClick={() => setType('2')}>
+      <Button onClick={() => props.onUpdateRaceType('3')}>
         <Icon
           name="Greyhounds"
           fill="#652f9c"
           />
       </Button>
-      <Button onClick={() => setType('3')}>
+      <Button onClick={() => props.onUpdateRaceType('2')}>
         <Icon
           name="Trots"
           fill="#652f9c"

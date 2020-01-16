@@ -6,6 +6,7 @@ export function useFetch(url) {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
+    setData(null)
     setLoading(true);
     fetch(url)
       .then(result => {

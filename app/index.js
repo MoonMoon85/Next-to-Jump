@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components';
 import { useFetch } from './utils/api'
 import { Tile } from './components/Tile'
+import { Loader } from './components/Loader'
 import { Nav } from './components/Nav'
 import './index.css'
 
 const NextToJumpWrapper = styled.div`
   flex-direction: row;
   display: flex;
-  justify-content: space-evenly;
+  background: #fff;
+  border-radius: 0 0 4px 0;
+  justify-content: flex-start;
   width: 100%;
   left: 0;
   position: absolute;
@@ -21,16 +24,36 @@ const NextToJumpWrapper = styled.div`
   padding-left: 10px;
 `;
 
+const NextToJumpEventWrapper = styled.div`
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`
+
+const Header = styled.div`
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-width: 120px;
+  background-color: #652f9c;
+  border-radius: 0 0 0 4px;
+  color: #fff;
+  padding: 12px 14px;
+`
+
 function NextToJump() {
   const [data, setData] = React.useState(null);
-  const [type, setType] = React.useState('1,2,3')
+  const [type, setType] = React.useState('1,2,3');
 
   const { loading, data: race, error } = useFetch(
-    `https://beteasy.com.au/api/home/next-jumps/2`
+    `https://beteasy.com.au/api/home/next-jumps/${type}`
   );
 
-  if (loading === true) {
-    return <p>Loading</p>;
+  const updateRaceType = type => {
+    setType(type);
   }
 
   if (error) {
@@ -43,17 +66,21 @@ function NextToJump() {
 
   return (
     <NextToJumpWrapper>
-      <Nav></Nav>
-      {race.result.map(race => (
-        <Tile
-          key={race.EventName}
-          link={`/racing-betting/${race.EventType.Slug}/${race.Venue.Slug}/${race.DateSlug}/race-${race.RaceNumber}-${race.MasterEventID}-${race.EventID}`}
-          icon={race.EventType.EventTypeDesc}
-          venue={race.Venue.Venue}
-          number={race.RaceNumber}
-          time={race.AdvertisedStartTime}
-        />
-      ))}
+      <Header>Next To Jump</Header>
+      <Nav onUpdateRaceType={updateRaceType}></Nav>
+      <NextToJumpEventWrapper>
+        {loading && <Loader></Loader>}
+        {!loading && race.result.map(race => (
+          <Tile
+            key={race.EventName}
+            link={`/racing-betting/${race.EventType.Slug}/${race.Venue.Slug}/${race.DateSlug}/race-${race.RaceNumber}-${race.MasterEventID}-${race.EventID}`}
+            icon={race.EventType.EventTypeDesc}
+            venue={race.Venue.Venue}
+            number={race.RaceNumber}
+            time={race.AdvertisedStartTime}
+          />
+        ))}
+      </NextToJumpEventWrapper>
     </NextToJumpWrapper>
   )
 }
