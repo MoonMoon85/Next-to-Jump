@@ -1,4 +1,4 @@
-# Barebones react starter
+# Built using a custom React boilerplate
 
 Starter template for react and webpack.
 
