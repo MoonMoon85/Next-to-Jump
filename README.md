@@ -7,6 +7,7 @@
 * React
 * Styled Components
 * Function Components
+* Prop Types
 * React Hooks
 * Webpack
 * Babel
