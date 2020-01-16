@@ -61,38 +61,6 @@ export function Loader() {
         </RaceEventDetail>
         <Countdown></Countdown>
       </RaceEvent>
-      <RaceEvent>
-        <RaceEventIcon></RaceEventIcon>
-        <RaceEventDetail>
-          <RaceEventVenue></RaceEventVenue>
-          <RaceEventRace></RaceEventRace>
-        </RaceEventDetail>
-        <Countdown></Countdown>
-      </RaceEvent>
-      <RaceEvent>
-        <RaceEventIcon></RaceEventIcon>
-        <RaceEventDetail>
-          <RaceEventVenue></RaceEventVenue>
-          <RaceEventRace></RaceEventRace>
-        </RaceEventDetail>
-        <Countdown></Countdown>
-      </RaceEvent>
-      <RaceEvent>
-        <RaceEventIcon></RaceEventIcon>
-        <RaceEventDetail>
-          <RaceEventVenue></RaceEventVenue>
-          <RaceEventRace></RaceEventRace>
-        </RaceEventDetail>
-        <Countdown></Countdown>
-      </RaceEvent>
-      <RaceEvent>
-        <RaceEventIcon></RaceEventIcon>
-        <RaceEventDetail>
-          <RaceEventVenue></RaceEventVenue>
-          <RaceEventRace></RaceEventRace>
-        </RaceEventDetail>
-        <Countdown></Countdown>
-      </RaceEvent>
     </React.Fragment>
   )
 }
