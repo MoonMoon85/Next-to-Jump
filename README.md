@@ -1,6 +1,18 @@
-![alt text](https://github.com/MoonMoon85/Next-to-Jump/blob/master/assests/njt.gif "NJT)
 
-# Built using a custom React boilerplate
+![NJT](https://github.com/MoonMoon85/Next-to-Jump/blob/master/assests/njt.gif)
+
+# Next To Jump feature
+
+## Built with
+* React
+* Styled Components
+* Function Components
+* React Hooks
+* Webpack
+* Babel
+* API
+
+# Built using a custom React boilerplate as below
 
 Starter template for react and webpack.
 
