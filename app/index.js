@@ -85,11 +85,7 @@ function NextToJump() {
   )
 }
 
-setTimeout(() => {
-  const ref = document.querySelector('.NavBar__navBar--3EpJD');
-  ref.insertAdjacentHTML('afterend', '<div class="webroi"></div>')
-  ReactDOM.render (
-    <NextToJump />,
-    document.querySelector('.webroi')
-  )
-}, 500)
+ReactDOM.render (
+  <NextToJump />,
+  document.querySelector('.webroi')
+)
